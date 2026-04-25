@@ -5,6 +5,9 @@ on:
         - cron: "0 2 * * *" # Runs daily at 2:00 AM UTC
     workflow_dispatch: # Allows manual trigger from the UI
 
+env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
     sync-and-prune:
         runs-on: ubuntu-latest
@@ -13,6 +16,7 @@ jobs:
 
         steps:
             - name: Checkout local repository
+
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
